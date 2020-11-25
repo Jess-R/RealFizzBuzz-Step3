@@ -6,6 +6,53 @@ public class Main {
 	public static int fizzCount = 0;
 	public static int buzzCount = 0;
 	public static int unalteredCount = 0;
+	public static int maxNumber;
+
+	public static int getMaxNumberFromUser() {
+		Scanner sc = new Scanner(System.in);
+
+		do {
+			System.out.print(("Assuming you start at 1, enter a whole number for a max range: "));
+			while (!sc.hasNextInt()) {
+				System.out.print("That is not a whole number. Try again: ");
+				sc.next();
+			}
+			maxNumber = sc.nextInt();
+		} while (maxNumber <= 0);
+
+		return maxNumber;
+	}
+
+	public static String run(int maxNumber) {
+		for (int currentNumber = 1; currentNumber <= maxNumber; currentNumber++) {
+			if (Integer.toString(currentNumber).contains("3")) {
+				incrementCounter("lucky");
+			} else if (isMultipleOf15(currentNumber)) {
+				incrementCounter("fizzBuzz");
+			} else if (isMultipleOf3(currentNumber)) {
+				incrementCounter("fizz");
+			} else if (isMultipleOf5(currentNumber)) {
+				incrementCounter("buzz");
+			} else {
+				System.out.print(currentNumber + " ");
+				incrementCounter("unaltered");
+			}
+		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("\nFizz: ").append(fizzCount);
+		sb.append("\nBuzz: ").append(buzzCount);
+		sb.append("\nBuzz: ").append(fizzBuzzCount);
+		sb.append("\nLucky: ").append(luckyCount);
+		sb.append("\nInteger: ").append(unalteredCount);
+
+		return sb.toString();
+//		System.out.print("\nFizz: " + fizzCount);
+//		System.out.print("\nBuzz: " + buzzCount);
+//		System.out.print("\nFizzBuzz: " + fizzBuzzCount);
+//		System.out.print("\nLucky: " + luckyCount);
+//		System.out.print("\nInteger: " + unalteredCount);
+	}
 
 	public static boolean isMultipleOf15(int number) {
 		return number % 15 == 0;
@@ -42,37 +89,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int maxNumber;
-
-		do {
-			System.out.print(("Assuming you start at 1, enter a whole number for a max range: "));
-			while (!sc.hasNextInt()) {
-				System.out.print("That is not a whole number. Try again: ");
-				sc.next();
-			}
-			maxNumber = sc.nextInt();
-		} while (maxNumber <= 0);
-
-		for (int currentNumber = 1; currentNumber <= maxNumber; currentNumber++) {
-			if (Integer.toString(currentNumber).contains("3")) {
-				incrementCounter("lucky");
-			} else if (isMultipleOf15(currentNumber)) {
-				incrementCounter("fizzBuzz");
-			} else if (isMultipleOf3(currentNumber)) {
-				incrementCounter("fizz");
-			} else if (isMultipleOf5(currentNumber)) {
-				incrementCounter("buzz");
-			} else {
-				System.out.print(currentNumber + " ");
-				incrementCounter("unaltered");
-			}
-		}
-
-		System.out.print("\nFizz: " + fizzCount);
-		System.out.print("\nBuzz: " + buzzCount);
-		System.out.print("\nFizzBuzz: " + fizzBuzzCount);
-		System.out.print("\nLucky: " + luckyCount);
-		System.out.print("\nInteger: " + unalteredCount);
+		// call run() with the value returned from getUserInput()
+		run(getMaxNumberFromUser());
 	}
 }

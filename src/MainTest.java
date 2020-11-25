@@ -3,14 +3,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
-	private final Main tester = new Main();
 	private final int number1 = 43;
 	private final int number2 = 15;
 
 	@Test
 	public void testIsMultipleOf15() {
-		boolean result1 = tester.isMultipleOf15(number1);
-		boolean result2 = tester.isMultipleOf15(number2);
+		boolean result1 = Main.isMultipleOf15(number1);
+		boolean result2 = Main.isMultipleOf15(number2);
 
 		assertFalse(result1);
 		assertTrue(result2);
@@ -18,8 +17,8 @@ public class MainTest {
 
 	@Test
 	public void testIsMultipleOf3() {
-		boolean result1 = tester.isMultipleOf3(number1);
-		boolean result2 = tester.isMultipleOf3(number2);
+		boolean result1 = Main.isMultipleOf3(number1);
+		boolean result2 = Main.isMultipleOf3(number2);
 
 		assertFalse(result1);
 		assertTrue(result2);
@@ -27,8 +26,8 @@ public class MainTest {
 
 	@Test
 	public void testIsMultipleOf5() {
-		boolean result1 = tester.isMultipleOf5(number1);
-		boolean result2 = tester.isMultipleOf5(number2);
+		boolean result1 = Main.isMultipleOf5(number1);
+		boolean result2 = Main.isMultipleOf5(number2);
 
 		assertFalse(result1);
 		assertTrue(result2);
@@ -37,24 +36,59 @@ public class MainTest {
 	@Test
 	public void testIncrementCounter() {
 		// test initial values
-		assertEquals(0, tester.luckyCount);
-		assertEquals(0, tester.fizzBuzzCount);
-		assertEquals(0, tester.fizzCount);
-		assertEquals(0, tester.buzzCount);
-		assertEquals(0, tester.unalteredCount);
+		assertEquals(0, Main.luckyCount);
+		assertEquals(0, Main.fizzBuzzCount);
+		assertEquals(0, Main.fizzCount);
+		assertEquals(0, Main.buzzCount);
+		assertEquals(0, Main.unalteredCount);
 
 		// increment value for each counter
-		tester.incrementCounter("lucky");
-		tester.incrementCounter("fizzBuzz");
-		tester.incrementCounter("fizz");
-		tester.incrementCounter("buzz");
-		tester.incrementCounter("unaltered");
+		Main.incrementCounter("lucky");
+		Main.incrementCounter("fizzBuzz");
+		Main.incrementCounter("fizz");
+		Main.incrementCounter("buzz");
+		Main.incrementCounter("unaltered");
 
 		// test values after incrementing
-		assertEquals(1, tester.luckyCount);
-		assertEquals(1, tester.fizzBuzzCount);
-		assertEquals(1, tester.fizzCount);
-		assertEquals(1, tester.buzzCount);
-		assertEquals(1, tester.unalteredCount);
+		assertEquals(1, Main.luckyCount);
+		assertEquals(1, Main.fizzBuzzCount);
+		assertEquals(1, Main.fizzCount);
+		assertEquals(1, Main.buzzCount);
+		assertEquals(1, Main.unalteredCount);
+	}
+
+//	@Test
+//	public void testGetMaxNumberFromUser() throws UnsupportedEncodingException {
+//		String validInput = "20";
+//		ByteArrayInputStream input = new ByteArrayInputStream(validInput.getBytes());
+//		System.setIn(input);
+//		int maxNumber = Integer.parseInt(validInput);
+//
+//		assertEquals(maxNumber, Main.getMaxNumberFromUser());
+//
+//		String invalidInput = "abc";
+//		ByteArrayInputStream input2 = new ByteArrayInputStream(invalidInput.getBytes());
+//		System.setIn(input2);
+//		ByteArrayOutputStream output = new ByteArrayOutputStream();
+//		PrintStream newOut = new PrintStream(output);
+//		System.setOut(newOut);
+//
+//		assertTrue(new String(output.toByteArray()).contains("That is not a whole number. Try again: "));
+//
+//	}
+//
+	@Test
+	public void testRun() {
+		int maxNumber = 20;
+		var results = Main.run(maxNumber);
+
+		StringBuilder expectedSb = new StringBuilder();
+		expectedSb.append("\nFizz: " + Main.fizzCount);
+		expectedSb.append("\nBuzz: " + Main.buzzCount);
+		expectedSb.append("\nBuzz: " + Main.fizzBuzzCount);
+		expectedSb.append("\nLucky: " + Main.luckyCount);
+		expectedSb.append("\nInteger: " + Main.unalteredCount);
+
+		assertEquals(expectedSb.toString(), results);
 	}
 }
