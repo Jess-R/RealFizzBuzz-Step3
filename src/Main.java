@@ -2,6 +2,18 @@ import java.util.Scanner;
 
 public class Main {
 
+	public static boolean isMultipleOf15(int number) {
+		return number % 15 == 0;
+	}
+
+	public static boolean isMultipleOf3(int number) {
+		return number % 3 == 0;
+	}
+
+	public static boolean isMultipleOf5(int number) {
+		return number % 5 == 0;
+	}
+
 	public static void run(int number) {
 		int fizzCount = 0;
 		int buzzCount = 0;
@@ -13,13 +25,13 @@ public class Main {
 			if (Integer.toString(n).contains("3")) {
 				System.out.print("lucky ");
 				luckyCount += 1;
-			} else if (n % 15 == 0) {
+			} else if (isMultipleOf15(n)) {
 				System.out.print("fizzbuzz ");
 				fizzBuzzCount += 1;
-			} else if (n % 3 == 0) {
+			} else if (isMultipleOf3(n)) {
 				System.out.print("fizz ");
 				fizzCount += 1;
-			} else if (n % 5 == 0) {
+			} else if (isMultipleOf5(n)) {
 				System.out.print("buzz ");
 				buzzCount += 1;
 			} else {
