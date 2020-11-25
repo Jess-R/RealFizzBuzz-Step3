@@ -1,16 +1,11 @@
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
 	private final Main tester = new Main();
 	private final int number1 = 43;
 	private final int number2 = 15;
-
-	@Test
-	public void testRun() {
-
-	}
 
 	@Test
 	public void testIsMultipleOf15() {
@@ -39,13 +34,27 @@ public class MainTest {
 		assertTrue(result2);
 	}
 
-//	@Test
-//	public void testIncrementCounter() {
-//		int result1 = tester.incrementCounter("lucky");
-//		var result2 = tester.incrementCounter("fizz");
-//		var result3 = tester.incrementCounter("buzz");
-//		var result4 = tester.incrementCounter("fizzBuzz");
-//		var result5 = tester.incrementCounter("unaltered");
-//
-//	}
+	@Test
+	public void testIncrementCounter() {
+		// test initial values
+		assertEquals(0, tester.luckyCount);
+		assertEquals(0, tester.fizzBuzzCount);
+		assertEquals(0, tester.fizzCount);
+		assertEquals(0, tester.buzzCount);
+		assertEquals(0, tester.unalteredCount);
+
+		// increment value for each counter
+		tester.incrementCounter("lucky");
+		tester.incrementCounter("fizzBuzz");
+		tester.incrementCounter("fizz");
+		tester.incrementCounter("buzz");
+		tester.incrementCounter("unaltered");
+
+		// test values after incrementing
+		assertEquals(1, tester.luckyCount);
+		assertEquals(1, tester.fizzBuzzCount);
+		assertEquals(1, tester.fizzCount);
+		assertEquals(1, tester.buzzCount);
+		assertEquals(1, tester.unalteredCount);
+	}
 }
