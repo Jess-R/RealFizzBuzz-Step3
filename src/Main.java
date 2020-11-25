@@ -1,6 +1,11 @@
 import java.util.Scanner;
 
 public class Main {
+	static int luckyCount = 0;
+	static int fizzBuzzCount = 0;
+	static int fizzCount = 0;
+	static int buzzCount = 0;
+	static int unalteredCount = 0;
 
 	public static boolean isMultipleOf15(int number) {
 		return number % 15 == 0;
@@ -14,29 +19,41 @@ public class Main {
 		return number % 5 == 0;
 	}
 
-	public static void run(int number) {
-		int fizzCount = 0;
-		int buzzCount = 0;
-		int fizzBuzzCount = 0;
-		int luckyCount = 0;
-		int unalteredCount = 0;
-
-		for (int n = 1; n <= number; n++) {
-			if (Integer.toString(n).contains("3")) {
+	public static void incrementCounter(String name) {
+		switch (name) {
+			case "lucky" -> {
 				System.out.print("lucky ");
 				luckyCount += 1;
-			} else if (isMultipleOf15(n)) {
+			}
+			case "fizzBuzz" -> {
 				System.out.print("fizzbuzz ");
 				fizzBuzzCount += 1;
-			} else if (isMultipleOf3(n)) {
+			}
+			case "fizz" -> {
 				System.out.print("fizz ");
 				fizzCount += 1;
-			} else if (isMultipleOf5(n)) {
+			}
+			case "buzz" -> {
 				System.out.print("buzz ");
 				buzzCount += 1;
+			}
+			case "unaltered" -> unalteredCount += 1;
+		}
+	}
+
+	public static void run(int maxNumber) {
+		for (int currentNumber = 1; currentNumber <= maxNumber; currentNumber++) {
+			if (Integer.toString(currentNumber).contains("3")) {
+				incrementCounter("lucky");
+			} else if (isMultipleOf15(currentNumber)) {
+				incrementCounter("fizzBuzz");
+			} else if (isMultipleOf3(currentNumber)) {
+				incrementCounter("fizz");
+			} else if (isMultipleOf5(currentNumber)) {
+				incrementCounter("buzz");
 			} else {
-				System.out.print(n + " ");
-				unalteredCount += 1;
+				System.out.print(currentNumber + " ");
+				incrementCounter("unaltered");
 			}
 		}
 
@@ -49,7 +66,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int number;
+		int maxNumber;
 
 		do {
 			System.out.print(("Assuming you start at 1, enter a whole number for a max range: "));
@@ -57,9 +74,9 @@ public class Main {
 				System.out.print("That is not a whole number. Try again: ");
 				sc.next();
 			}
-			number = sc.nextInt();
-		} while (number <= 0);
+			maxNumber = sc.nextInt();
+		} while (maxNumber <= 0);
 
-		run(number);
+		run(maxNumber);
 	}
 }
