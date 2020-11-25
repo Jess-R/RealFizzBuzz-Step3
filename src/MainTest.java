@@ -9,8 +9,8 @@ public class MainTest {
 
 	@Test
 	public void testIsMultipleOf15() {
-		boolean result1 = Main.isMultipleOf15(number1);
-		boolean result2 = Main.isMultipleOf15(number2);
+		boolean result1 = tester.isMultipleOf15(number1);
+		boolean result2 = tester.isMultipleOf15(number2);
 
 		assertFalse(result1);
 		assertTrue(result2);
@@ -18,8 +18,8 @@ public class MainTest {
 
 	@Test
 	public void testIsMultipleOf3() {
-		boolean result1 = Main.isMultipleOf3(number1);
-		boolean result2 = Main.isMultipleOf3(number2);
+		boolean result1 = tester.isMultipleOf3(number1);
+		boolean result2 = tester.isMultipleOf3(number2);
 
 		assertFalse(result1);
 		assertTrue(result2);
@@ -27,8 +27,8 @@ public class MainTest {
 
 	@Test
 	public void testIsMultipleOf5() {
-		boolean result1 = Main.isMultipleOf5(number1);
-		boolean result2 = Main.isMultipleOf5(number2);
+		boolean result1 = tester.isMultipleOf5(number1);
+		boolean result2 = tester.isMultipleOf5(number2);
 
 		assertFalse(result1);
 		assertTrue(result2);
