@@ -75,8 +75,8 @@ public class MainTest {
 	@Test
 	public void testGetMaxNumberFromUser_invalid() {
 		String invalidInput = "abc";
-		ByteArrayInputStream input2 = new ByteArrayInputStream(invalidInput.getBytes());
-		System.setIn(input2);
+		ByteArrayInputStream input = new ByteArrayInputStream(invalidInput.getBytes());
+		System.setIn(input);
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		PrintStream newOut = new PrintStream(output);
 		System.setOut(newOut);
