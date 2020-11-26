@@ -87,7 +87,7 @@ public class MainTest {
 	@Test
 	public void testRun() {
 		int maxNumber = 20;
-		var results = Main.run(maxNumber);
+		String results = Main.run(maxNumber);
 
 		StringBuilder expectedSb = new StringBuilder();
 		expectedSb.append("\nFizz: ").append(Main.fizzCount);
