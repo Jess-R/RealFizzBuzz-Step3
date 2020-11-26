@@ -1,9 +1,6 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,7 +60,7 @@ public class MainTest {
 	}
 
 	@Test
-	public void testGetMaxNumberFromUser_valid() throws UnsupportedEncodingException {
+	public void testGetMaxNumberFromUser() {
 		String validInput = "20";
 		ByteArrayInputStream input = new ByteArrayInputStream(validInput.getBytes());
 		System.setIn(input);
@@ -73,28 +70,16 @@ public class MainTest {
 	}
 
 	@Test
-	public void testGetMaxNumberFromUser_invalid() {
-		String invalidInput = "abc";
-		ByteArrayInputStream input = new ByteArrayInputStream(invalidInput.getBytes());
-		System.setIn(input);
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		PrintStream newOut = new PrintStream(output);
-		System.setOut(newOut);
-
-		assertTrue(new String(output.toByteArray()).contains("That is not a whole number. Try again: "));
-	}
-
-	@Test
 	public void testRun() {
 		int maxNumber = 20;
 		String results = Main.run(maxNumber);
 
 		StringBuilder expectedSb = new StringBuilder();
-		expectedSb.append("\nFizz: ").append(Main.fizzCount);
-		expectedSb.append("\nBuzz: ").append(Main.buzzCount);
-		expectedSb.append("\nBuzz: ").append(Main.fizzBuzzCount);
-		expectedSb.append("\nLucky: ").append(Main.luckyCount);
-		expectedSb.append("\nInteger: ").append(Main.unalteredCount);
+		expectedSb.append("\nFizz: ").append("4");
+		expectedSb.append("\nBuzz: ").append("3");
+		expectedSb.append("\nBuzz: ").append("1");
+		expectedSb.append("\nLucky: ").append("2");
+		expectedSb.append("\nInteger: ").append("10");
 
 		assertEquals(expectedSb.toString(), results);
 	}
