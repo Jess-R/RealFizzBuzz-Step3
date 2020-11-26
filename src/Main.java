@@ -46,12 +46,13 @@ public class Main {
 		sb.append("\nLucky: ").append(luckyCount);
 		sb.append("\nInteger: ").append(unalteredCount);
 
+		System.out.print("\nFizz: " + fizzCount);
+		System.out.print("\nBuzz: " + buzzCount);
+		System.out.print("\nFizzBuzz: " + fizzBuzzCount);
+		System.out.print("\nLucky: " + luckyCount);
+		System.out.print("\nInteger: " + unalteredCount);
+
 		return sb.toString();
-//		System.out.print("\nFizz: " + fizzCount);
-//		System.out.print("\nBuzz: " + buzzCount);
-//		System.out.print("\nFizzBuzz: " + fizzBuzzCount);
-//		System.out.print("\nLucky: " + luckyCount);
-//		System.out.print("\nInteger: " + unalteredCount);
 	}
 
 	public static boolean isMultipleOf15(int number) {
@@ -66,26 +67,31 @@ public class Main {
 		return number % 5 == 0;
 	}
 
-	public static void incrementCounter(String name) {
+	public static String incrementCounter(String name) {
+		StringBuilder sb = new StringBuilder();
+
 		switch (name) {
 			case "lucky" -> {
-				System.out.print("lucky ");
+				sb.append("lucky ");
 				luckyCount += 1;
 			}
 			case "fizzBuzz" -> {
-				System.out.print("fizzbuzz ");
+				sb.append("fizzbuzz ");
 				fizzBuzzCount += 1;
 			}
 			case "fizz" -> {
-				System.out.print("fizz ");
+				sb.append("fizz ");
 				fizzCount += 1;
 			}
 			case "buzz" -> {
-				System.out.print("buzz ");
+				sb.append("buzz ");
 				buzzCount += 1;
 			}
 			case "unaltered" -> unalteredCount += 1;
 		}
+
+		System.out.print(sb);
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {

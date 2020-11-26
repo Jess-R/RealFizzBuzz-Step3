@@ -55,6 +55,9 @@ public class MainTest {
 		assertEquals(1, Main.fizzCount);
 		assertEquals(1, Main.buzzCount);
 		assertEquals(1, Main.unalteredCount);
+
+		// test console output:
+
 	}
 
 //	@Test
@@ -83,11 +86,11 @@ public class MainTest {
 		var results = Main.run(maxNumber);
 
 		StringBuilder expectedSb = new StringBuilder();
-		expectedSb.append("\nFizz: " + Main.fizzCount);
-		expectedSb.append("\nBuzz: " + Main.buzzCount);
-		expectedSb.append("\nBuzz: " + Main.fizzBuzzCount);
-		expectedSb.append("\nLucky: " + Main.luckyCount);
-		expectedSb.append("\nInteger: " + Main.unalteredCount);
+		expectedSb.append("\nFizz: ").append(Main.fizzCount);
+		expectedSb.append("\nBuzz: ").append(Main.buzzCount);
+		expectedSb.append("\nBuzz: ").append(Main.fizzBuzzCount);
+		expectedSb.append("\nLucky: ").append(Main.luckyCount);
+		expectedSb.append("\nInteger: ").append(Main.unalteredCount);
 
 		assertEquals(expectedSb.toString(), results);
 	}
