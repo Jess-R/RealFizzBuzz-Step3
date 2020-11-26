@@ -67,7 +67,7 @@ public class Main {
 		return number % 5 == 0;
 	}
 
-	public static String incrementCounter(String name) {
+	public static void incrementCounter(String name) {
 		StringBuilder sb = new StringBuilder();
 
 		switch (name) {
@@ -90,8 +90,7 @@ public class Main {
 			case "unaltered" -> unalteredCount += 1;
 		}
 
-		System.out.print(sb);
-		return sb.toString();
+		System.out.print(sb.toString());
 	}
 
 	public static void main(String[] args) {

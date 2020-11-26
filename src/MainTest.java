@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
@@ -55,31 +60,30 @@ public class MainTest {
 		assertEquals(1, Main.fizzCount);
 		assertEquals(1, Main.buzzCount);
 		assertEquals(1, Main.unalteredCount);
-
-		// test console output:
-
 	}
 
-//	@Test
-//	public void testGetMaxNumberFromUser() throws UnsupportedEncodingException {
-//		String validInput = "20";
-//		ByteArrayInputStream input = new ByteArrayInputStream(validInput.getBytes());
-//		System.setIn(input);
-//		int maxNumber = Integer.parseInt(validInput);
-//
-//		assertEquals(maxNumber, Main.getMaxNumberFromUser());
-//
-//		String invalidInput = "abc";
-//		ByteArrayInputStream input2 = new ByteArrayInputStream(invalidInput.getBytes());
-//		System.setIn(input2);
-//		ByteArrayOutputStream output = new ByteArrayOutputStream();
-//		PrintStream newOut = new PrintStream(output);
-//		System.setOut(newOut);
-//
-//		assertTrue(new String(output.toByteArray()).contains("That is not a whole number. Try again: "));
-//
-//	}
-//
+	@Test
+	public void testGetMaxNumberFromUser_valid() throws UnsupportedEncodingException {
+		String validInput = "20";
+		ByteArrayInputStream input = new ByteArrayInputStream(validInput.getBytes());
+		System.setIn(input);
+		int maxNumber = Integer.parseInt(validInput);
+
+		assertEquals(maxNumber, Main.getMaxNumberFromUser());
+	}
+
+	@Test
+	public void testGetMaxNumberFromUser_invalid() {
+		String invalidInput = "abc";
+		ByteArrayInputStream input2 = new ByteArrayInputStream(invalidInput.getBytes());
+		System.setIn(input2);
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		PrintStream newOut = new PrintStream(output);
+		System.setOut(newOut);
+
+		assertTrue(new String(output.toByteArray()).contains("That is not a whole number. Try again: "));
+	}
+
 	@Test
 	public void testRun() {
 		int maxNumber = 20;
